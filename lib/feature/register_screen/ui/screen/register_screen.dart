@@ -2,27 +2,25 @@ import 'package:chat_me/core/helper/spaces.dart';
 import 'package:chat_me/core/widget/app_buttom.dart';
 import 'package:chat_me/feature/login_screen/ui/widget/app_text_field.dart';
 import 'package:chat_me/feature/login_screen/ui/widget/login_image_fac.dart';
-import 'package:chat_me/feature/login_screen/ui/widget/or_and_divider.dart';
 import 'package:chat_me/feature/register_screen/ui/widget/snack_bar_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   bool isObscured = true;
-  String? email, password;
+  String? email,password;
   bool inAsyncCall = false;
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -35,17 +33,17 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 LoginImageFac(),
                 AppTextField(
+                  labelText: 'email',
                   onChanged: (data) {
                     email = data;
                   },
-                  labelText: 'email',
                 ),
                 verticalSpace(25.h),
                 AppTextField(
-                  labelText: 'password',
                   onChanged: (data) {
                     password = data;
                   },
+                  labelText: 'password',
                   suffixIcon: IconButton(
                     icon: Icon(
                         isObscured ? Icons.visibility_off : Icons.visibility),
@@ -64,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         inAsyncCall = true;
                       });
                       try {
-                        await loginUser();
+                        await regesterUser();
                         snackBar(context, "Success");
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'weak-password') {
@@ -84,14 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                     }
                   },
-                  buttonText: "login",
-                ),
-                OrAndDivider(),
-                AppButtom(
-                  onPressed: () {
-                    Get.toNamed('/RegisterScreen');
-                  },
-                  buttonText: "sign_up ",
+                  buttonText: "sign_up",
                 ),
               ],
             ),
@@ -101,8 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future<void> loginUser() async {
+ 
+
+  Future<void> regesterUser() async {
     await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email!, password: password!);
+        .createUserWithEmailAndPassword(email: email!, password: password!);
   }
 }

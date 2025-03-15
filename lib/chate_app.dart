@@ -17,8 +17,7 @@ class ChatApp extends StatelessWidget {
         initialRoute: AppRouter.initialRoute,
         title: "ItqanApp",
         theme: ThemeData(
-          primaryColor: ColorsManager.Amber,
-
+          primaryColor: ColorsManager.Amber,  
         ),
         debugShowCheckedModeBanner: false,
       

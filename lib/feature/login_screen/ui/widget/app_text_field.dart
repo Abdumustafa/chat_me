@@ -6,14 +6,14 @@ import 'package:get/get.dart';
 class AppTextField extends StatefulWidget {
   const AppTextField({
     super.key,
-    required this.textEditingController,
     required this.labelText,
     this.suffixIcon,
+    this.onChanged,
   });
 
   final String labelText;
   final Widget? suffixIcon;
-  final TextEditingController textEditingController;
+  final Function(String)? onChanged;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -23,10 +23,15 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
+      height: 80.h,
       padding: EdgeInsets.only(left: 20.w, right: 20.w),
-      child: TextField(
-        controller: widget.textEditingController,
+      child: TextFormField(
+        validator: (Value) {
+          if (Value!.isEmpty) {
+            return 'please enter your ${widget.labelText}';
+          }
+        },
+        onChanged: widget.onChanged,
         obscureText: false,
         decoration: InputDecoration(
           labelText: widget.labelText.tr,
