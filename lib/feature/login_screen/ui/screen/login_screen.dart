@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                       try {
                         await loginUser();
-                    Get.toNamed('/ChatScreen');
+                    Get.toNamed('/ChatScreen',arguments: email);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'weak-password') {
                           snackBar(

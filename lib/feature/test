@@ -1,0 +1,95 @@
+// Scaffold(
+//         backgroundColor: Colors.white,
+//         appBar: AppBar(
+//           backgroundColor: Colors.white,
+//           automaticallyImplyLeading: false,
+//           title: Text(
+//             'Health Assistant',
+//             style: TextStyle(
+//               color: Colors.black,
+//             ),
+//           ),
+//           centerTitle: true,
+//           elevation: 0.2,
+//           shadowColor: Colors.grey,
+//           scrolledUnderElevation: 0.2,
+//         ),
+//         body: Column(
+//           children: [
+//             Expanded(
+//               child: ListView.builder(
+//                   itemCount: 20,
+//                   itemBuilder: (context, index) {
+//                     return ChatBuble();
+//                   }),
+//             ),
+//             Container(
+//               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+//               decoration: BoxDecoration(
+//                 color: Colors.transparent,
+//               ),
+//               child: Row(
+//                 children: [
+//                   Expanded(
+//                     child: Container(
+//                       padding: EdgeInsets.symmetric(horizontal: 12),
+//                       decoration: BoxDecoration(
+//                         color: Colors.grey.shade200,
+//                         borderRadius: BorderRadius.circular(30),
+//                       ),
+//                       child: Row(
+//                         children: [
+//                           Expanded(
+//                             child: TextField(
+//                               controller: massageController,
+//                               onSubmitted: (val) {
+//                                 massages.add({
+//                                   'massages': val,
+//                                 });
+//                                 massageController.clear();
+//                               },
+//                               decoration: InputDecoration(
+//                                 hintText: 'Type your message...',
+//                                 hintStyle: TextStyle(
+//                                     color: Colors.blueGrey, fontSize: 14),
+//                                 border: InputBorder.none,
+//                               ),
+//                             ),
+//                           ),
+//                           IconButton(
+//                             icon: Transform.rotate(
+//                               angle: 35 * 3.1415926535 / 180,
+//                               child: Padding(
+//                                   padding: const EdgeInsets.only(left: 5),
+//                                   child: Icon(Icons.attach_file,
+//                                       color: Colors.blueGrey, size: 25)),
+//                             ),
+//                             onPressed: () {},
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                   horizontalSpace(5),
+//                   Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: Colors.green,
+//                     ),
+//                     child: IconButton(
+//                       alignment: Alignment.topRight,
+//                       icon: Transform.rotate(
+//                         angle: -35 * 3.1415926535 / 180,
+//                         child: Padding(
+//                             padding: const EdgeInsets.only(left: 5),
+//                             child: Icon(Icons.send,
+//                                 color: Colors.white, size: 25)),
+//                       ),
+//                       onPressed: () {},
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));

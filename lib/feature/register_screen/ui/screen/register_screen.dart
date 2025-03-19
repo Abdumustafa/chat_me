@@ -65,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       });
                       try {
                         await regesterUser();
-                    Get.toNamed('/ChatScreen');
+                    Get.toNamed('/ChatScreen',arguments: email);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'weak-password') {
                           snackBar(
