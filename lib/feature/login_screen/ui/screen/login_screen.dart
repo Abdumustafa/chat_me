@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                       try {
                         await loginUser();
-                        snackBar(context, "Success");
+                    Get.toNamed('/ChatScreen');
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'weak-password') {
                           snackBar(

@@ -1,4 +1,5 @@
 
+import 'package:chat_me/feature/chat_screen/ui/screen/chat_screen.dart';
 import 'package:chat_me/feature/login_screen/ui/screen/login_screen.dart';
 import 'package:chat_me/feature/register_screen/ui/screen/register_screen.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,8 @@ class AppRouter {
 
     GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/RegisterScreen', page: () => RegisterScreen()),
+                GetPage(name: '/ChatScreen', page: () => ChatScreen()),
+
 
   ];
 }
